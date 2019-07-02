@@ -4,7 +4,7 @@ import { Event } from './event'
 @Injectable({
 	providedIn: 'root'
 })
-export class NgxEventbusService {
+export class EventBusService {
 
 	private eventsHolder = {}
 
@@ -17,8 +17,8 @@ export class NgxEventbusService {
 		this.eventsHolder[event.name] = events
 	}
 
-	triggerEvent<T>(eventName: string, payload: T) {
-		let events: Event[] = this.eventsHolder[eventName].events
+	triggerEvent<T>(eventName: string, payload: T = null) {
+		let events: Event[] = this.eventsHolder[eventName]
 		if (events) {
 			events.forEach(e => {
 				this.execute<T>(e.callback, payload)

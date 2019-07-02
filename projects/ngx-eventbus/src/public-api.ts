@@ -3,4 +3,3 @@
  */
 
 export * from './lib/service/ngx-eventbus.service';
-export * from './lib/ngx-eventbus.module';
