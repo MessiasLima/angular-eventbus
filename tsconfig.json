@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-eventbus": [
+        "dist/ngx-eventbus"
+      ],
+      "ngx-eventbus/*": [
+        "dist/ngx-eventbus/*"
+      ]
+    }
   }
 }
