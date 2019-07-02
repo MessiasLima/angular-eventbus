@@ -5,6 +5,7 @@ import { Event } from './event'
 	providedIn: 'root'
 })
 export class NgxEventbusService {
+
 	private eventsHolder = {}
 
 	addEventListener(event: Event): void {
