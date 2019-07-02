@@ -1,27 +1,63 @@
-# AngularEventbus
+# ngx-eventbus
+A simple and lightweight library to trigger events through the Angular apps
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
+## Usage
 
-## Development server
+### (Step 1) Inject the service
+### (Step 2) Inject the service
+Just add the dependency injection for ```EventBusService``` on your component or service
+```typescript
+constructor(private eventBus: EventBusService) { }
+```
+### (Step 3) Subscribe to events
+Use the method `addEventListener()` passing an object with name and callback. This method will be executed when the event happens
+```typescript
+ngOnInit(){
+	this.myEvent = this.eventBus.addEventListener({
+		name: 'myEvent',
+		callback: (payload: any) => {
+			console.log(payload);
+		}
+	})
+}
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### (Step 4) Trigger the event
+Call the `triggerEvent()` function passing the name of the event and whatever you want to send to subscribers. All subscribers will be notified and receive the data.
+```typescript
+this.eventBus.triggerEvent('myEvent', { message: 'It works!' })
+```
 
-## Code scaffolding
+### (Step 5) Removing the listeners
+And finally remove the listener from the bus when is not required anymore.
+```typescript
+ngOnDestroy() {
+	this.eventBus.removeEventListener(this.myEvent)
+}
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## License
 
-## Build
+MIT License
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Copyright (c) 2019 Messias Lima
 
-## Running unit tests
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-## Running end-to-end tests
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
