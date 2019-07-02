@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { NgxEventbusComponent } from './ngx-eventbus.component';
 
 @NgModule({
-  declarations: [NgxEventbusComponent],
+  declarations: [],
   imports: [
   ],
-  exports: [NgxEventbusComponent]
+  exports: []
 })
 export class NgxEventbusModule { }
