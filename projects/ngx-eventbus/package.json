@@ -1,8 +1,17 @@
 {
 	"name": "ngx-eventbus",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"peerDependencies": {
 		"@angular/common": "^8.0.3",
 		"@angular/core": "^8.0.3"
-	}
+	},
+	"keywords": [
+		"angular",
+		"ng",
+		"event",
+		"eventbus",
+		"eventEmitter",
+		"listeners",
+		"eventDispatcher"
+	]
 }
