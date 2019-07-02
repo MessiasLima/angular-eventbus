@@ -1,6 +1,18 @@
 {
 	"name": "ngx-eventbus",
-	"version": "1.0.2",
+	"id": "ngx-eventbus",
+	"version": "1.0.3",
+	"description": "A simple and lightweight library to trigger events through the Angular apps",
+	"author": {
+		"name": "Messias Lima",
+		"email": "messiaslima.03@gmail.com",
+		"url": "https://messiaslima.github.io"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MessiasLima/angular-eventbus.git"
+	  },
+	"license": "MIT",
 	"peerDependencies": {
 		"@angular/common": "^8.0.3",
 		"@angular/core": "^8.0.3"
