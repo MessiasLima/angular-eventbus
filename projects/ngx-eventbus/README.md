@@ -1,2 +1,7 @@
 # ngx-eventbus
-A simple library to trigger events through the Angular apps
+A simple and lightweight library to trigger events through the Angular apps
+
+## Usage
+
+### Subscribing to events
+

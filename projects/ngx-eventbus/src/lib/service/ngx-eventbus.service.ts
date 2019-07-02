@@ -8,13 +8,24 @@ export class EventBusService {
 
 	private eventsHolder = {}
 
-	addEventListener(event: Event): void {
+	addEventListener(event: Event): Event {
 		let events = this.eventsHolder[event.name]
 		if (!events) {
 			events = []
 		}
 		events.push(event)
 		this.eventsHolder[event.name] = events
+		return event
+	}
+
+	removeEventListener(event: Event): void {
+		let events: Event[] = this.eventsHolder[event.name]
+		if (!events) {
+			events = []
+		}
+		const index = events.indexOf(event)
+		if(index == -1) return
+		events.splice(index, 1)
 	}
 
 	triggerEvent<T>(eventName: string, payload: T = null) {

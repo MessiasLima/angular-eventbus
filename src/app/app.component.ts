@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { EventBusService } from 'projects/ngx-eventbus/src/public-api';
 
 @Component({
@@ -9,23 +9,44 @@ import { EventBusService } from 'projects/ngx-eventbus/src/public-api';
 export class AppComponent implements OnInit {
 
 	title = 'angular-eventbus';
-	private eventName = 'myEvent'
+	myEvent: any
 
-	constructor(private eventBus: EventBusService) {
-	}
+	constructor(private eventBus: EventBusService) { }
 
 	ngOnInit() {
 		this.eventBus.addEventListener({
-			name: this.eventName,
+			name: 'myEvent',
 			callback: this.eventCallback
 		})
 
-		setTimeout(() => {
-			this.eventBus.triggerEvent(this.eventName)
-		}, 5000)
+		this.myEvent = this.eventBus.addEventListener({
+			name: 'myEvent',
+			callback: this.eventCallback2
+		})
+
+		this.eventBus.addEventListener({
+			name: 'myEvent',
+			callback: this.eventCallback3
+		})
 	}
 
 	private eventCallback(payload: any) {
-		console.log(payload);
+		console.log("metodo 1", payload);
+	}
+
+	private eventCallback2(payload: any) {
+		console.log("metodo 2", payload);
+	}
+
+	private eventCallback3(payload: any) {
+		console.log("metodo 3", payload);
+	}
+
+	trigger() {
+		this.eventBus.triggerEvent('myEvent', Math.random())
+	}
+
+	remove() {
+		this.eventBus.removeEventListener(this.myEvent)
 	}
 }
