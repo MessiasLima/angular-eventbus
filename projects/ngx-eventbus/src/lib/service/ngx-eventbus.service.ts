@@ -16,4 +16,19 @@ export class NgxEventbusService {
 		events.push(event)
 		this.eventsHolder[event.name] = events
 	}
+
+	triggerEvent<T>(eventName: string, payload: T) {
+		let events: Event[] = this.eventsHolder[eventName].events
+		if (events) {
+			events.forEach(e => {
+				this.execute<T>(e.callback, payload)
+			})
+		}
+	}
+
+	private execute<T>(action: Function, payload: T) {
+		setTimeout(() => {
+			action(payload)
+		}, 0)
+	}
 }
