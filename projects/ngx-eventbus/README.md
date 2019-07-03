@@ -1,13 +1,23 @@
 # ngx-eventbus
 A simple and lightweight library to trigger events through the Angular apps
 
-## Usage
+## Instalation
 
-### (Step 1) Install ngx-eventbus
 Add `ngx-eventbus` to your dependencies by executing:
 ```bash
 $ npm install --save ngx-eventbus
 ```
+
+## Usage
+
+### (Step 1) Add EventBusService to your application
+Add `EventBusService` in providers array on your `app.module.ts`
+```typescript
+...
+providers: [EventBusService],
+...
+```
+
 ### (Step 2) Inject the service
 Just add the dependency injection for ```EventBusService``` on your component or service
 ```typescript
