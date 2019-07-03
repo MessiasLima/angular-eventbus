@@ -1,7 +1,7 @@
 {
 	"name": "ngx-eventbus",
 	"id": "ngx-eventbus",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "A simple and lightweight library to trigger events through the Angular apps",
 	"author": {
 		"name": "Messias Lima",
